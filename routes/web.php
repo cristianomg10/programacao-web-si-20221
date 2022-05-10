@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ProdutosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/clientes/excluir/{id}', [ClientesController::class, 'excluir'])->name('clientes_excluir');
     });
     
+    Route::get('/produtos/novo', [ProdutosController::class, 'cadastro'])->name('produtos_novo');
+    Route::post('/produtos/novo', [ProdutosController::class, 'novo'])->name('produtos_salvar');
+
+    Route::get('/produtos/listar', [ProdutosController::class, 'listar'])->name('produtos_listar');
+    Route::get('/produto/{slug}', [ProdutosController::class, 'exibir'])->name('produtos_exibir');
 });
 
 require __DIR__.'/auth.php';
