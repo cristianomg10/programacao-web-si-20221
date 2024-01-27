@@ -20,19 +20,16 @@
         <td>{{ $c->telefone }}</td>
         <td>{{ $c->renda }}</td>
         <td>
-            <a href="{{ route('clientes_alterar', ['id' => $c->id]) }}" class="btn btn-warning">Alterar</a>
+            <x-operacoes.botoes :id="$c->id" :link-alterar="route('clientes_alterar', ['id' => $c->id])" entidade="clientes"/>
+            <!--
+            <x-botoes.alterar :link="route('clientes_alterar', ['id' => $c->id])"/>
+            <x-botoes.excluir :id="$c->id" entidade="clientes"/>
             <a href="#" onclick="excluir({{ $c->id }})" class="btn btn-danger">Excluir</a>
+            -->
         </td>
     </tr>
     @endforeach
     </tbody>
 </table>
 
-<script>
-    function excluir(id){
-        if (confirm(`Deseja realmente excluir o cliente ${id}?`)){
-            location.href = route('clientes_excluir', {'id':id});
-        }
-    }
-</script>
 @endsection

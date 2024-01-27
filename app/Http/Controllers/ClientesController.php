@@ -9,7 +9,13 @@ class ClientesController extends Controller
 {
     //
     function cadastro_novo(){
-        return view('novo_cliente');
+        $form = [
+            ['type' => 'text', 'name' => 'nome', 'label' => 'Nome'],
+            ['type' => 'text', 'name' => 'telefone', 'label' => 'Telefone'],
+            ['type' => 'number', 'name' => 'renda', 'label' => 'Renda'],
+        ];
+        
+        return view('novo_cliente', ['form' => $form]);
     }
 
     function novo(Request $req){
